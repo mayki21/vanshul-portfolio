@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root {
     --navy:    #0d1b2a;
@@ -837,7 +838,7 @@
           </div>
           <div>
             <p class="contact-label">Address</p>
-            <p class="contact-value">B2/1B, Nidhi House, Africa Avenue Rd, Lower Ground Floor,<br>Safdarjung Enclave, New Delhi – 110029</p>
+            <p class="contact-value">B2/1B, Lower Ground Floor, Nidhi House, Safdarjung Enclave,<br>Africa Avenue Rd, New Delhi – 110029</p>
           </div>
         </div>
         <div class="contact-item">
@@ -893,15 +894,12 @@
         </div>
         <div class="vcard-row">
           <span class="vcard-key">Address</span>
-          <span class="vcard-val">B2/1B, Nidhi House, Africa Avenue Rd, Lower Ground Floor, Safdarjung Enclave, New Delhi – 110029</span>
+          <span class="vcard-val">B2/1B, Lower Ground Floor, Nidhi House, Safdarjung Enclave, Africa Avenue Rd, New Delhi – 110029</span>
         </div>
       </div>
-      <!-- QR code can be generated and embedded here -->
       <div style="margin-top: 16px;">
-        <p class="vcard-key" style="margin-bottom: 10px;">QR Code</p>
-        <div class="qr-placeholder" style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(184,146,42,0.3); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
-          <p style="font-size: 0.65rem; color: rgba(255,255,255,0.3); text-align: center; padding: 8px;">QR Code<br>Placeholder</p>
-        </div>
+        <p class="vcard-key" style="margin-bottom: 10px;">Scan to Save Contact</p>
+        <div id="vcardQR" style="background: #fff; display: inline-block; padding: 6px;"></div>
       </div>
       <div style="margin-top: 24px;">
         <a href="vanshul-pali.vcf" class="btn-gold" download>Download vCard</a>
@@ -917,6 +915,17 @@
 </footer>
 
 <script>
+  // vCard QR code
+  var vcardData = "BEGIN:VCARD\nVERSION:3.0\nFN:Vanshul Pali\nN:Pali;Vanshul;;;\nORG:Vanshul Pali and Associates\nTITLE:Advocate and Arbitrator\nTEL;TYPE=CELL:+919711552649\nEMAIL:vpassociates13@gmail.com\nADR;TYPE=WORK:;;B2/1B Lower Ground Floor Nidhi House Safdarjung Enclave Africa Avenue Rd;New Delhi;;110029;India\nEND:VCARD";
+  new QRCode(document.getElementById('vcardQR'), {
+    text: vcardData,
+    width: 160,
+    height: 160,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+
   // contact form AJAX submission
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
