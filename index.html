@@ -1,0 +1,883 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Vanshul Pali – Advocate and Solicitor" />
+<title>Vanshul Pali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:    #0d1b2a;
+    --navy2:   #142338;
+    --gold:    #b8922a;
+    --gold2:   #d4a843;
+    --cream:   #f7f3ec;
+    --light:   #fdfbf8;
+    --mid:     #6b7280;
+    --border:  #ddd5c4;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:  'Jost', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--light);
+    color: var(--navy);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,27,42,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,146,42,0.25);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+  }
+  .nav-brand {
+    font-family: var(--font-serif);
+    font-size: 1.25rem; font-weight: 600;
+    color: var(--gold2); letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold2); }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+  .hamburger span { width: 24px; height: 2px; background: var(--gold2); display: block; transition: 0.3s; }
+  .mobile-menu {
+    display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+    background: var(--navy); padding: 24px 32px;
+    flex-direction: column; gap: 20px;
+    border-bottom: 1px solid rgba(184,146,42,0.2);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  #home {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 80px 80px;
+    position: relative; overflow: hidden;
+  }
+  #home::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(184,146,42,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-text { max-width: 560px; }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; font-weight: 500;
+  }
+  .hero-name {
+    font-family: var(--font-serif); font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 600; color: #fff; line-height: 1.05; margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: var(--font-serif); font-size: 1.35rem; font-weight: 400;
+    color: var(--gold2); margin-bottom: 36px; font-style: italic;
+  }
+  .hero-body { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.85; max-width: 480px; }
+  .hero-divider { width: 48px; height: 2px; background: var(--gold); margin: 32px 0; }
+  .hero-cta { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 12px 32px; font-size: 0.75rem; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 600; font-family: var(--font-sans);
+    border: none; cursor: pointer; text-decoration: none; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold2); }
+  .btn-outline {
+    border: 1px solid rgba(184,146,42,0.5); color: var(--gold2);
+    padding: 12px 32px; font-size: 0.75rem; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 500; font-family: var(--font-sans);
+    text-decoration: none; transition: all 0.2s; background: transparent;
+  }
+  .btn-outline:hover { border-color: var(--gold2); background: rgba(184,146,42,0.08); }
+
+  .hero-image-col {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+  }
+  .hero-photo-frame {
+    width: 380px; height: 480px;
+    position: relative;
+  }
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute; top: -12px; right: -12px;
+    width: 100%; height: 100%;
+    border: 2px solid rgba(184,146,42,0.35);
+    pointer-events: none;
+  }
+  .hero-photo-frame img, .hero-photo-placeholder {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 15%;
+    display: block; filter: grayscale(10%) contrast(1.05);
+  }
+  .hero-photo-placeholder {
+    background: linear-gradient(160deg, #1a2f45 0%, #0d1b2a 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px;
+  }
+  .hero-photo-placeholder svg { opacity: 0.25; }
+  .hero-photo-placeholder p { color: rgba(255,255,255,0.3); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* stats row */
+  .hero-stats { display: flex; gap: 40px; margin-top: 40px; }
+  .stat-item { border-left: 2px solid var(--gold); padding-left: 16px; }
+  .stat-number { font-family: var(--font-serif); font-size: 2rem; color: var(--gold2); font-weight: 600; line-height: 1; }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+  /* ── SECTIONS COMMON ─────────────────────────────── */
+  section { padding: 96px 80px; }
+  section:nth-child(even) { background: var(--cream); }
+  .section-header { margin-bottom: 56px; }
+  .section-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px; font-weight: 500;
+  }
+  .section-title {
+    font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 600; color: var(--navy); line-height: 1.1;
+  }
+  .section-divider { width: 40px; height: 2px; background: var(--gold); margin-top: 20px; }
+  .section-body { font-size: 0.9rem; line-height: 1.9; color: #374151; max-width: 780px; }
+
+  /* ── ABOUT ────────────────────────────────────────── */
+  #about .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 64px; align-items: start; }
+  #about .about-text p { margin-bottom: 20px; font-size: 0.9rem; line-height: 1.9; color: #374151; }
+
+  .edu-list, .award-list { list-style: none; margin-top: 8px; }
+  .edu-list li, .award-list li {
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+    font-size: 0.88rem; color: #374151; line-height: 1.6;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .edu-list li::before, .award-list li::before {
+    content: '◆'; color: var(--gold); font-size: 0.5rem; margin-top: 6px; flex-shrink: 0;
+  }
+  .edu-list li strong, .award-list li strong { color: var(--navy); display: block; }
+
+  .sidebar-card {
+    background: var(--navy); color: #fff; padding: 36px;
+    border-top: 3px solid var(--gold);
+  }
+  .sidebar-card h3 {
+    font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600;
+    color: var(--gold2); margin-bottom: 24px;
+  }
+  .sidebar-card ul { list-style: none; }
+  .sidebar-card ul li {
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.82rem; color: rgba(255,255,255,0.7); line-height: 1.5;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .sidebar-card ul li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+  .cta-row { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+  .btn-gold {
+    background: var(--gold); color: var(--navy); padding: 12px 28px;
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s;
+  }
+  .btn-gold:hover { background: var(--gold2); }
+  .btn-dark {
+    background: var(--navy); color: var(--gold2); padding: 12px 28px;
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; display: inline-block;
+    border: 1px solid rgba(184,146,42,0.4); transition: all 0.2s;
+  }
+  .btn-dark:hover { background: rgba(184,146,42,0.1); }
+
+  /* ── EXPERIENCE ────────────────────────────────────── */
+  #experience { background: var(--navy); }
+  #experience .section-title { color: #fff; }
+  #experience .section-eyebrow { color: var(--gold); }
+  #experience .section-divider { background: var(--gold); }
+
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 1px; background: rgba(184,146,42,0.3);
+  }
+  .timeline-item { position: relative; margin-bottom: 48px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -36px; top: 8px;
+    width: 9px; height: 9px; background: var(--gold); border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(184,146,42,0.2);
+  }
+  .tl-date {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 6px; font-weight: 500;
+  }
+  .tl-role {
+    font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
+    color: #fff; margin-bottom: 4px;
+  }
+  .tl-org { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+  .tl-desc { font-size: 0.87rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
+  .tl-desc ul { list-style: none; margin-top: 8px; }
+  .tl-desc ul li { padding: 4px 0 4px 16px; position: relative; }
+  .tl-desc ul li::before { content: '–'; position: absolute; left: 0; color: var(--gold); }
+
+  /* ── APPOINTMENTS ──────────────────────────────────── */
+  #appointments .appointments-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  }
+  .appt-card {
+    border: 1px solid var(--border); padding: 28px 32px;
+    border-top: 3px solid var(--gold); background: #fff;
+    transition: box-shadow 0.2s;
+  }
+  .appt-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+  .appt-card h3 {
+    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 8px;
+  }
+  .appt-card p { font-size: 0.85rem; color: var(--mid); line-height: 1.6; }
+  .appt-badge {
+    display: inline-block; background: var(--cream);
+    color: var(--gold); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 3px 10px; margin-bottom: 12px;
+    border: 1px solid var(--border); font-weight: 500;
+  }
+
+  /* ── AWARDS ────────────────────────────────────────── */
+  #awards { background: var(--cream); }
+  .awards-list { display: flex; flex-direction: column; gap: 0; }
+  .award-row {
+    display: grid; grid-template-columns: 100px 1fr;
+    gap: 32px; align-items: start;
+    padding: 32px 0; border-bottom: 1px solid var(--border);
+  }
+  .award-year {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 600;
+    color: var(--gold); line-height: 1;
+  }
+  .award-title {
+    font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 8px;
+  }
+  .award-desc { font-size: 0.87rem; color: var(--mid); line-height: 1.7; }
+
+  /* ── CONTACT ────────────────────────────────────────── */
+  #contact { background: var(--navy); }
+  #contact .section-title { color: #fff; }
+  #contact .section-eyebrow { color: var(--gold); }
+  #contact .section-divider { background: var(--gold); }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-info { color: rgba(255,255,255,0.7); }
+  .contact-info p { font-size: 0.9rem; line-height: 1.85; margin-bottom: 36px; }
+  .contact-items { display: flex; flex-direction: column; gap: 0; }
+  .contact-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-icon {
+    width: 40px; height: 40px; background: rgba(184,146,42,0.15);
+    border: 1px solid rgba(184,146,42,0.25);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-icon svg { color: var(--gold2); }
+  .contact-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .contact-value { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+  .contact-value a { color: inherit; text-decoration: none; }
+  .contact-value a:hover { color: var(--gold2); }
+
+  /* vcard box */
+  .vcard-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(184,146,42,0.2);
+    padding: 36px; 
+  }
+  .vcard-box h3 {
+    font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600;
+    color: var(--gold2); margin-bottom: 20px;
+  }
+  .vcard-fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+  .vcard-row { display: flex; flex-direction: column; gap: 2px; }
+  .vcard-key { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+  .vcard-val { font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+  .qr-placeholder {
+    width: 120px; height: 120px; background: #fff; margin-top: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qr-placeholder img { width: 100%; height: 100%; }
+
+  /* ── FOOTER ─────────────────────────────────────────── */
+  footer {
+    background: #070f18; padding: 28px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(184,146,42,0.15);
+  }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+  footer span { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+  /* ── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    nav { padding: 0 32px; }
+    #home { padding: 100px 48px 80px; }
+    section { padding: 72px 48px; }
+    footer { padding: 24px 48px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    #home { grid-template-columns: 1fr; padding: 90px 28px 60px; text-align: center; gap: 48px; }
+    .hero-body { margin: 0 auto; }
+    .hero-divider { margin: 32px auto; }
+    .hero-stats { justify-content: center; }
+    .hero-cta { justify-content: center; }
+    .hero-image-col { order: -1; }
+    .hero-photo-frame { width: 260px; height: 320px; }
+    section { padding: 56px 28px; }
+    #about .about-grid { grid-template-columns: 1fr; }
+    #appointments .appointments-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .award-row { grid-template-columns: 64px 1fr; gap: 20px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 28px; }
+    nav { padding: 0 24px; }
+  }
+
+  /* ── DISCLAIMER OVERLAY ────────────────────────────── */
+  #disclaimer-overlay {
+    display: flex;
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(7,15,24,0.92);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  #disclaimer-box {
+    background: #fff; max-width: 640px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    padding: 48px; position: relative;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  }
+  #disclaimer-box h2 {
+    font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 24px; line-height: 1.2;
+  }
+  #disclaimer-box p {
+    font-size: 0.88rem; color: #1a1a1a; line-height: 1.85; margin-bottom: 16px;
+  }
+  #disclaimer-box ul { list-style: none; margin: 16px 0; }
+  #disclaimer-box ul li {
+    font-size: 0.88rem; color: #1a1a1a; line-height: 1.8;
+    padding: 8px 0 8px 20px; position: relative;
+    border-bottom: 1px solid #f0ece4;
+  }
+  #disclaimer-box ul li::before { content: '•'; position: absolute; left: 0; color: var(--gold); font-size: 1rem; }
+  #disclaimer-box .disclaimer-footer {
+    margin-top: 28px; padding-top: 20px; border-top: 1px solid #e5e0d6;
+  }
+  #disclaimer-box .disclaimer-footer p {
+    font-size: 0.82rem; color: #6b7280; margin-bottom: 20px;
+  }
+  #agree-btn {
+    background: var(--navy); color: #fff;
+    padding: 14px 48px; font-size: 0.8rem; letter-spacing: 0.14em;
+    text-transform: uppercase; font-weight: 600; font-family: var(--font-sans);
+    border: none; cursor: pointer; transition: background 0.2s; width: 100%;
+  }
+  #agree-btn:hover { background: var(--gold); color: var(--navy); }
+  body.disclaimer-open { overflow: hidden; }
+
+  /* fade-in on scroll */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- DISCLAIMER OVERLAY -->
+<div id="disclaimer-overlay">
+  <div id="disclaimer-box">
+    <h2>Disclaimer &amp; Confirmation</h2>
+    <p>Under the rules of the Bar Council of India, Legal professionals and Law firms are prohibited from soliciting work or advertising. The web page is purely for information about Mr. Vanshul Pali (Advocate). By clicking "I Agree" below, the user acknowledges that:</p>
+    <ul>
+      <li>There has been no advertisement, personal communication, solicitation, invitation or inducement of any sort whatsoever from the owner of the webpage.</li>
+      <li>The user wishes to gain more information about Mr. Vanshul Pali for his/her own information and personal/professional use; and</li>
+      <li>The information about Mr. Vanshul Pali is provided to the user only on his/her specific request and any information obtained or materials downloaded from this website are completely at the user’s volition and any transmission, receipt or use of this website would not create any lawyer-client relationship.</li>
+    </ul>
+    <div class="disclaimer-footer">
+      <p>This website is not intended to be a source of advertising or solicitation and the contents hereof should not be construed as legal advice in any manner whatsoever.</p>
+      <p>The content of this website is protected Intellectual Property.</p>
+      <button id="agree-btn" onclick="agreeDisclaimer()">I Agree</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#home">Vanshul Pali</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#appointments">Appointments</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#appointments" onclick="closeMenu()">Appointments</a>
+  <a href="#awards" onclick="closeMenu()">Awards</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Advocate &amp; Solicitor · New Delhi</p>
+    <h1 class="hero-name">Vanshul<br>Pali</h1>
+    <p class="hero-title">Advocate | Solicitor | Arbitrator</p>
+    <div class="hero-divider"></div>
+    <p class="hero-body">
+      A dynamic legal practitioner with extensive experience representing clients before the Supreme Court of India, High Courts, NCLT, NCLAT, Consumer Commissions, Arbitral Tribunals, and regulatory forums across the country, serving as Panel Counsel for the Central Government and advising ministries, public authorities, corporations, and private clients in complex commercial, arbitration, insolvency, and constitutional disputes.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Years of Practice</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Panel Appointments</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Office Cities</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#about" class="btn-primary">Learn More</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-image-col fade-in">
+    <div class="hero-photo-frame">
+      <img src="https://i.ibb.co/jkgh5ZLg/Image.jpg" alt="Vanshul Pali" />
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header fade-in">
+    <p class="section-eyebrow">Background</p>
+    <h2 class="section-title">Brief Profile</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>Vanshul Pali is a distinguished Advocate with over six years of extensive experience in arbitration, civil, commercial, constitutional, and regulatory litigation. Recognized for his strategic advocacy and result-oriented approach, he regularly represents clients before the Supreme Court of India, High Courts, Tribunals, and various judicial and quasi-judicial forums across the country.</p>
+      <p>Mr. Pali presently serves as Panel Counsel for Central Government Litigation before the Supreme Court of India, Panel Counsel representing the Union of India before the Delhi High Court, Panel Counsel for the Municipal Corporation of Delhi (MCD), and Panel Counsel for the Delhi State Legal Services Authority (DLSA). These appointments reflect the trust reposed in him by public institutions and his commitment to advancing the rule of law and access to justice.</p>
+      <p>His practice spans a broad spectrum of contentious and advisory matters, including commercial disputes, corporate litigation, insolvency proceedings, white-collar crime investigations, fraud and corruption matters, regulatory enforcement actions, public law disputes, and domestic and international arbitration. He regularly appears before the NCLT, NCLAT, NCDRC, Appellate Tribunal for Forfeited Property (ATFP), High Courts, District Courts, and specialized tribunals across India.</p>
+      <p>Mr. Pali is particularly sought after for his expertise in high-stakes arbitration and complex commercial disputes, where he advises corporations, public sector entities, entrepreneurs, and high-net-worth individuals. He frequently assists retired judges, senior advocates, government bodies, and political organizations in domestic and international arbitral proceedings, including strategy formulation, pleadings, award drafting, hearing preparation, evidence management, and enforcement proceedings.</p>
+      <p>With a strong presence across major legal and commercial hubs, he operates through offices in New Delhi, Bengaluru, and Goa, enabling seamless representation and legal support across jurisdictions.</p>
+
+      <div style="margin-top: 40px;">
+        <p class="section-eyebrow" style="margin-bottom: 16px;">Education &amp; Qualifications</p>
+        <ul class="edu-list">
+          <li>
+            <span>
+              <strong>B.B.A., LL.B. (H)</strong>
+              University School of Laws &amp; Legal Studies, GGSIPU, New Delhi
+            </span>
+          </li>
+          <li>
+            <span>
+              <strong>Summer Cohort, International Academy for Arbitration Law</strong>
+              Paris, France (2026)
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="cta-row" style="margin-top: 40px;">
+        <a href="Vanshul_Pali_CV.pdf" class="btn-gold" download>Download CV</a>
+        <a href="#contact" class="btn-dark">vCard</a>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div class="sidebar-card">
+        <h3>Areas of Practice</h3>
+        <ul>
+          <li>Domestic &amp; International Arbitration</li>
+          <li>Commercial &amp; Civil Litigation</li>
+          <li>Corporate &amp; Insolvency (NCLT/NCLAT)</li>
+          <li>White-Collar Crime &amp; Fraud</li>
+          <li>Constitutional &amp; Public Law</li>
+          <li>Regulatory Enforcement Actions</li>
+          <li>Contract Law &amp; Advisory</li>
+          <li>Consumer Dispute Resolution</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card" style="margin-top: 24px; background: var(--cream); color: var(--navy);">
+        <h3 style="color: var(--navy);">Offices</h3>
+        <ul>
+          <li style="color: var(--navy); opacity: 0.8;">New Delhi (Principal)</li>
+          <li style="color: var(--navy); opacity: 0.8;">Bengaluru</li>
+          <li style="color: var(--navy); opacity: 0.8;">Goa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-in">
+    <p class="section-eyebrow">Career</p>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Nov 2025 – Present</p>
+      <h3 class="tl-role">Panel Counsel — Central Government Litigation</h3>
+      <p class="tl-org">Supreme Court of India · Engaged by the President of India through Ministry of Law &amp; Justice</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Empaneled for three years to represent the Union of India and its Ministries in legal proceedings.</li>
+          <li>Drafts pleadings, legal opinions, and files SLPs and counter-affidavits on behalf of the Central Government.</li>
+          <li>Seeks instructions from and provides legal opinions to different Central Government Ministries.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Sep 2025 – Present</p>
+      <h3 class="tl-role">Panel Counsel — Central Government Litigation</h3>
+      <p class="tl-org">High Court of Delhi · Engaged by the President of India through Ministry of Law &amp; Justice</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Empaneled for three years to defend the Union of India in legal proceedings before the Delhi High Court.</li>
+          <li>Provides legal opinions, manages litigation, and coordinates with ministries to defend government actions.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">May 2025 – Present</p>
+      <h3 class="tl-role">Panel Counsel — Municipal Corporation of Delhi (MCD)</h3>
+      <p class="tl-org">High Court of Delhi</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Represents MCD's interests in litigation, including counter-affidavits, hearings, and matters related to city administration, policies, and property.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Jul 2024 – Present</p>
+      <h3 class="tl-role">Legal Service Advocate — Civil Panel</h3>
+      <p class="tl-org">Central Delhi Legal Services Authority (DLSA)</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Provides legal aid, advice, and consultations to underserved and marginalized individuals.</li>
+          <li>Drafts pleadings, applications, and legal notices in civil cases; assists in mediation and settlement efforts.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Aug 2020 – Present</p>
+      <h3 class="tl-role">Founder</h3>
+      <p class="tl-org">Vanshul Pali &amp; Associates · All Courts across India</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Assisted Justice (Retd.) Deepak Verma and Shashank Garg, Senior Advocate, Delhi High Court, in domestic and international arbitration disputes — award writing, briefing, hearing preparation.</li>
+          <li>Advises and represents clients in domestic arbitration matters including pre-arbitration strategy, invocation, and proceedings before arbitral tribunals.</li>
+          <li>Drafts arbitration agreements, statements of claim/defence, rejoinders, written submissions, and enforcement/setting aside petitions under the Arbitration and Conciliation Act, 1996.</li>
+          <li>Litigates at the Supreme Court, Delhi High Court, NCLT, NCLAT, Consumer Redressal Commissions, and District Courts in Delhi, Punjab, and Karnataka.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Apr 2022 – Apr 2023</p>
+      <h3 class="tl-role">Legal Advisor &amp; Representative</h3>
+      <p class="tl-org">Aqualite Industries Pvt. Ltd., New Delhi</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Led and managed domestic arbitration proceedings, including drafting of claims and defences.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Apr 2022 – Apr 2023</p>
+      <h3 class="tl-role">Legal Advisor &amp; Representative</h3>
+      <p class="tl-org">Crown Gaskets Pvt. Ltd., Bahadurgarh, Haryana</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Provided legal representation, documentation, advisory, arbitration consultations, mediation, and negotiations, including strategic dispute resolution, contract drafting, and risk mitigation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Sep 2021 – Aug 2022</p>
+      <h3 class="tl-role">Standing / Senior Counsel</h3>
+      <p class="tl-org">Shvan Development Foundation (NGO), New Delhi</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Supervised and handled civil and criminal matters, advising and developing litigation strategies before Indian Courts.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Apr 2021 – Apr 2022</p>
+      <h3 class="tl-role">Legal Advisor &amp; Representative</h3>
+      <p class="tl-org">Cantabil Retail India Ltd., New Delhi</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Provided legal representation, documentation, advisory, and arbitration consultations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Aug 2020 – Jul 2023</p>
+      <h3 class="tl-role">Legal Advisor to Member of Parliament</h3>
+      <p class="tl-org">Shri Vinay Dinu Tendulkar, MP (Rajya Sabha, Goa — BJP)</p>
+      <div class="tl-desc">
+        <ul>
+          <li>Provided legal advice to the sole Rajya Sabha representative for the State of Goa.</li>
+          <li>Worked on welfare initiatives and Government Schemes pertaining to the State and people of Goa.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- APPOINTMENTS -->
+<section id="appointments">
+  <div class="section-header fade-in">
+    <p class="section-eyebrow">Official Roles</p>
+    <h2 class="section-title">Current Panel Appointments</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="appointments-grid">
+    <div class="appt-card fade-in">
+      <span class="appt-badge">Nov 2025 – Present</span>
+      <h3>Panel Counsel — Central Government</h3>
+      <p>Supreme Court of India. Empaneled for three years by the President of India through the Ministry of Law &amp; Justice to represent the Union of India and its Ministries.</p>
+    </div>
+    <div class="appt-card fade-in">
+      <span class="appt-badge">Sep 2025 – Present</span>
+      <h3>Panel Counsel — Central Government</h3>
+      <p>High Court of Delhi. Empaneled for three years by the President of India through the Ministry of Law &amp; Justice to defend the Union of India in Delhi High Court proceedings.</p>
+    </div>
+    <div class="appt-card fade-in">
+      <span class="appt-badge">May 2025 – Present</span>
+      <h3>Panel Counsel — Municipal Corporation of Delhi</h3>
+      <p>High Court of Delhi. Engaged by the Competent Authority of MCD for one year to represent the Corporation in matters of city administration, policies, and property.</p>
+    </div>
+    <div class="appt-card fade-in">
+      <span class="appt-badge">Jul 2024 – Present</span>
+      <h3>Legal Service Advocate — Civil Panel</h3>
+      <p>Central Delhi Legal Services Authority (DLSA). Empaneled for two years to provide legal aid and dispute resolution services to underserved individuals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section-header fade-in">
+    <p class="section-eyebrow">Recognition</p>
+    <h2 class="section-title">Awards &amp; Honours</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="awards-list">
+    <div class="award-row fade-in">
+      <div class="award-year">2026</div>
+      <div>
+        <p class="award-title">Plaque of Honour — Indian Council of Jurists, All India Bar Association</p>
+        <p class="award-desc">Awarded for representing the Government of India before the Hon'ble Supreme Court of India.</p>
+      </div>
+    </div>
+    <div class="award-row fade-in">
+      <div class="award-year">2025</div>
+      <div>
+        <p class="award-title">Working Committee Head — Delhi Arbitration Weekend (DAW)</p>
+        <p class="award-desc">Organised in partnership with the Delhi International Arbitration Centre (DIAC) and the Supreme Court of India.</p>
+      </div>
+    </div>
+    <div class="award-row fade-in">
+      <div class="award-year">2023</div>
+      <div>
+        <p class="award-title">Letter of Appreciation — Shri Vinay Dinu Tendulkar, Ex-MP</p>
+        <p class="award-desc">Received from the Ex-Member of Parliament for rendering extraordinary legal advice as his Legal Advisor in various arbitration matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-in">
+    <p class="section-eyebrow">Reach Out</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-in">
+      <p>For enquiries regarding legal representation, arbitration matters, advisory services, or any other professional matter, please reach out directly.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-label">Address</p>
+            <p class="contact-value">B2/1B, Nidhi House, Africa Avenue Rd, Lower Ground Floor,<br>Safdarjung Enclave, New Delhi – 110029</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-label">Phone</p>
+            <p class="contact-value"><a href="tel:+919711552649">+91 9711552649</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-label">Email</p>
+            <p class="contact-value"><a href="mailto:vpassociates13@gmail.com">vpassociates13@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <div>
+            <p class="contact-label">Firm</p>
+            <p class="contact-value">Vanshul Pali &amp; Associates</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="vcard-box fade-in">
+      <h3>Digital Business Card (vCard)</h3>
+      <div class="vcard-fields">
+        <div class="vcard-row">
+          <span class="vcard-key">Name</span>
+          <span class="vcard-val">Vanshul Pali, Advocate</span>
+        </div>
+        <div class="vcard-row">
+          <span class="vcard-key">Phone</span>
+          <span class="vcard-val">+91-9711552649</span>
+        </div>
+        <div class="vcard-row">
+          <span class="vcard-key">Email</span>
+          <span class="vcard-val">vpassociates13@gmail.com</span>
+        </div>
+        <div class="vcard-row">
+          <span class="vcard-key">Address</span>
+          <span class="vcard-val">B2/1B, Nidhi House, Africa Avenue Rd, Lower Ground Floor, Safdarjung Enclave, New Delhi – 110029</span>
+        </div>
+      </div>
+      <!-- QR code can be generated and embedded here -->
+      <div style="margin-top: 16px;">
+        <p class="vcard-key" style="margin-bottom: 10px;">QR Code</p>
+        <div class="qr-placeholder" style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(184,146,42,0.3); width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
+          <p style="font-size: 0.65rem; color: rgba(255,255,255,0.3); text-align: center; padding: 8px;">QR Code<br>Placeholder</p>
+        </div>
+      </div>
+      <div style="margin-top: 24px;">
+        <a href="vanshul-pali.vcf" class="btn-gold" download>Download vCard</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Vanshul Pali. All rights reserved.</p>
+  <span>Advocate &amp; Solicitor · New Delhi</span>
+</footer>
+
+<script>
+  function agreeDisclaimer() {
+    document.getElementById('disclaimer-overlay').style.display = 'none';
+  }
+
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold2)' : '';
+    });
+  });
+</script>
+</body>
+</html>
