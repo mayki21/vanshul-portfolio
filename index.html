@@ -562,7 +562,7 @@
 
       <div class="cta-row" style="margin-top: 40px;">
         <a href="https://drive.google.com/uc?export=download&id=1jETeCnPY28wb-BgtxKxonMSkLH4NAALX" class="btn-gold" download>Download CV</a>
-        <a href="#contact" class="btn-dark">vCard</a>
+        <a href="#" class="btn-dark" onclick="openVcard();return false;">vCard</a>
       </div>
     </div>
 
@@ -877,36 +877,39 @@
       </div>
     </div>
 
-    <div class="vcard-box fade-in">
-      <h3>Digital Business Card (vCard)</h3>
-      <div class="vcard-fields">
-        <div class="vcard-row">
-          <span class="vcard-key">Name</span>
-          <span class="vcard-val">Vanshul Pali, Advocate</span>
-        </div>
-        <div class="vcard-row">
-          <span class="vcard-key">Phone</span>
-          <span class="vcard-val">+91-9711552649</span>
-        </div>
-        <div class="vcard-row">
-          <span class="vcard-key">Email</span>
-          <span class="vcard-val">vpassociates13@gmail.com</span>
-        </div>
-        <div class="vcard-row">
-          <span class="vcard-key">Address</span>
-          <span class="vcard-val">B2/1B, Lower Ground Floor, Nidhi House, Safdarjung Enclave, Africa Avenue Rd, New Delhi – 110029</span>
-        </div>
-      </div>
-      <div style="margin-top: 16px;">
-        <p class="vcard-key" style="margin-bottom: 10px;">Scan to Save Contact</p>
-        <div id="vcardQR" style="background: #fff; display: inline-block; padding: 6px;"></div>
-      </div>
-      <div style="margin-top: 24px;">
-        <a href="vanshul-pali.vcf" class="btn-gold" download>Download vCard</a>
-      </div>
-    </div>
   </div>
 </section>
+
+<!-- VCARD MODAL -->
+<div id="vcard-modal" style="display:none; position:fixed; inset:0; z-index:9998; background:rgba(7,15,24,0.88); align-items:center; justify-content:center; padding:24px;">
+  <div style="background:#fff; max-width:420px; width:100%; padding:40px; position:relative; border-top:4px solid var(--gold); box-shadow:0 24px 80px rgba(0,0,0,0.5);">
+    <button onclick="closeVcard()" style="position:absolute; top:14px; right:18px; background:none; border:none; font-size:1.4rem; cursor:pointer; color:#6b7280; line-height:1;">&#x2715;</button>
+    <h3 style="font-family:var(--font-serif); font-size:1.5rem; font-weight:700; color:var(--navy); margin-bottom:24px;">Digital Business Card</h3>
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px;">
+      <div>
+        <p style="font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;">Name</p>
+        <p style="font-size:0.92rem; color:var(--navy); font-weight:500;">Vanshul Pali, Advocate</p>
+      </div>
+      <div>
+        <p style="font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;">Phone</p>
+        <p style="font-size:0.92rem; color:var(--navy);">+91-9711552649</p>
+      </div>
+      <div>
+        <p style="font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;">Email</p>
+        <p style="font-size:0.92rem; color:var(--navy);">vpassociates13@gmail.com</p>
+      </div>
+      <div>
+        <p style="font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;">Address</p>
+        <p style="font-size:0.92rem; color:var(--navy);">B2/1B, Lower Ground Floor, Nidhi House, Safdarjung Enclave, Africa Avenue Rd, New Delhi – 110029</p>
+      </div>
+    </div>
+    <div style="margin-bottom:24px;">
+      <p style="font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Scan to Save Contact</p>
+      <div id="vcardQR" style="background:#fff; display:inline-block; border:1px solid #e5e0d6; padding:6px;"></div>
+    </div>
+    <a href="vanshul-pali.vcf" class="btn-gold" download style="display:block; text-align:center; padding:13px;">Download vCard</a>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -915,15 +918,22 @@
 </footer>
 
 <script>
-  // vCard QR code
-  var vcardData = "BEGIN:VCARD\nVERSION:3.0\nFN:Vanshul Pali\nN:Pali;Vanshul;;;\nORG:Vanshul Pali and Associates\nTITLE:Advocate and Arbitrator\nTEL;TYPE=CELL:+919711552649\nEMAIL:vpassociates13@gmail.com\nADR;TYPE=WORK:;;B2/1B Lower Ground Floor Nidhi House Safdarjung Enclave Africa Avenue Rd;New Delhi;;110029;India\nEND:VCARD";
-  new QRCode(document.getElementById('vcardQR'), {
-    text: vcardData,
-    width: 160,
-    height: 160,
-    colorDark: '#000000',
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.M
+  // vCard modal
+  function openVcard() {
+    var modal = document.getElementById('vcard-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    if (!document.getElementById('vcardQR').hasChildNodes()) {
+      var vcardData = "BEGIN:VCARD\nVERSION:3.0\nFN:Vanshul Pali\nN:Pali;Vanshul;;;\nORG:Vanshul Pali and Associates\nTITLE:Advocate and Arbitrator\nTEL;TYPE=CELL:+919711552649\nEMAIL:vpassociates13@gmail.com\nADR;TYPE=WORK:;;B2/1B Lower Ground Floor Nidhi House Safdarjung Enclave Africa Avenue Rd;New Delhi;;110029;India\nEND:VCARD";
+      new QRCode(document.getElementById('vcardQR'), { text: vcardData, width: 160, height: 160, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+    }
+  }
+  function closeVcard() {
+    document.getElementById('vcard-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.getElementById('vcard-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeVcard();
   });
 
   // contact form AJAX submission
