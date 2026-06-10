@@ -268,6 +268,44 @@
     border: 1px solid var(--border); font-weight: 500;
   }
 
+  /* ── WHAT WE OFFER ─────────────────────────────────── */
+  #whatweoffer { background: var(--light); }
+  #whatweoffer .section-title { color: var(--navy); }
+  .wwo-intro {
+    font-size: 0.92rem; line-height: 1.9; color: #374151;
+    max-width: 860px; margin: 0 auto 64px; text-align: center;
+  }
+  .wwo-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+  }
+  .wwo-card {
+    background: var(--cream);
+    border-top: 3px solid var(--gold);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 36px 36px 32px;
+    transition: box-shadow 0.2s;
+  }
+  .wwo-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+  .wwo-card-title {
+    font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 20px; line-height: 1.3; letter-spacing: 0.01em;
+  }
+  .wwo-card ul { list-style: none; }
+  .wwo-card ul li {
+    font-size: 0.84rem; color: #4b5563; line-height: 1.75;
+    padding: 7px 0 7px 18px; position: relative;
+    border-bottom: 1px solid rgba(184,146,42,0.12);
+  }
+  .wwo-card ul li:last-child { border-bottom: none; }
+  .wwo-card ul li::before {
+    content: '–'; position: absolute; left: 0;
+    color: var(--gold); font-weight: 600;
+  }
+  @media (max-width: 768px) {
+    .wwo-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── AWARDS ────────────────────────────────────────── */
   #awards { background: var(--cream); }
   .awards-list { display: flex; flex-direction: column; gap: 0; }
@@ -472,6 +510,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#appointments">Appointments</a></li>
+    <li><a href="#whatweoffer">What We Offer</a></li>
     <li><a href="#awards">Awards</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -484,6 +523,7 @@
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#experience" onclick="closeMenu()">Experience</a>
   <a href="#appointments" onclick="closeMenu()">Appointments</a>
+  <a href="#whatweoffer" onclick="closeMenu()">What We Offer</a>
   <a href="#awards" onclick="closeMenu()">Awards</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
@@ -753,6 +793,76 @@
       <h3>Legal Service Advocate — Civil Panel</h3>
       <p>Central Delhi Legal Services Authority (DLSA). Empaneled for two years to provide legal aid and dispute resolution services to underserved individuals.</p>
     </div>
+  </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section id="whatweoffer">
+  <div class="section-header fade-in" style="text-align: center;">
+    <p class="section-eyebrow" style="text-align: center;">Services</p>
+    <h2 class="section-title" style="text-align: center;">What We Offer</h2>
+    <div class="section-divider" style="margin: 20px auto 0;"></div>
+  </div>
+  <p class="wwo-intro fade-in">
+    I, along with my team, offer assistance to multinational corporations, foreign investors, overseas businesses, promoters, and entrepreneurs seeking to establish, operate, expand, manufacture, invest, or conduct business in India or abroad. Our practice is structured around three core verticals that address the commercial, regulatory, and dispute-resolution needs of businesses operating in increasingly complex domestic and cross-border environments.
+  </p>
+  <div class="wwo-grid">
+
+    <div class="wwo-card fade-in">
+      <h3 class="wwo-card-title">Corporate Advisory, India Entry &amp; Regulatory Compliance</h3>
+      <ul>
+        <li>Advising multinational corporations, foreign investors, and international businesses on establishing and expanding operations in India.</li>
+        <li>Structuring foreign investments, joint ventures, subsidiaries, and strategic commercial arrangements.</li>
+        <li>Navigating complex regulatory and compliance frameworks governing business operations in India.</li>
+        <li>Drafting, reviewing, and negotiating commercial agreements critical to business growth and risk management.</li>
+        <li>Advising on cross-border transactions, international trade, and foreign exchange regulations.</li>
+        <li>Supporting manufacturing, procurement, supply-chain, and distribution operations across sectors.</li>
+        <li>Assisting with mergers, acquisitions, strategic investments, and corporate restructuring initiatives.</li>
+        <li>Suggesting commercially driven legal solutions aligned with long-term business objectives.</li>
+      </ul>
+    </div>
+
+    <div class="wwo-card fade-in">
+      <h3 class="wwo-card-title">Commercial, Construction, Renewable Energy &amp; Sports Arbitration</h3>
+      <ul>
+        <li>Offering assistance to clients in domestic and international arbitration proceedings.</li>
+        <li>Advising on complex shareholder, joint venture, and cross-border commercial disputes.</li>
+        <li>Acting in construction and infrastructure arbitrations involving EPC contracts, concession agreements, and large-scale development projects.</li>
+        <li>Advising stakeholders in disputes arising from renewable energy projects, power purchase agreements, and energy infrastructure developments.</li>
+        <li>Advising athletes, sporting organisations, clubs, federations, and commercial stakeholders in sports-related disputes and regulatory proceedings.</li>
+        <li>Developing dispute-resolution strategies that balance legal enforcement with commercial considerations.</li>
+        <li>Managing multi-jurisdictional disputes and enforcement proceedings.</li>
+        <li>Securing recognition and enforcement of arbitral awards across jurisdictions.</li>
+      </ul>
+    </div>
+
+    <div class="wwo-card fade-in">
+      <h3 class="wwo-card-title">Corporate Retainership Services</h3>
+      <ul>
+        <li>Providing legal support in coordination with General Counsel and corporation's in-house legal teams and management.</li>
+        <li>Providing continuous legal oversight across commercial, regulatory, and operational matters.</li>
+        <li>Advising on contractual, governance, employment, and compliance-related issues.</li>
+        <li>Supporting strategic decision-making through commercially informed legal counsel.</li>
+        <li>Identifying and mitigating legal and regulatory risks across business operations.</li>
+        <li>Managing legal workflows, stakeholder engagements, and dispute-prevention strategies.</li>
+        <li>Delivering responsive and commercially focused legal support tailored to evolving business needs.</li>
+      </ul>
+    </div>
+
+    <div class="wwo-card fade-in">
+      <h3 class="wwo-card-title">White-Collar Crime, Corporate Investigations &amp; Regulatory Defence</h3>
+      <ul>
+        <li>Advising corporations, promoters, directors, and senior executives in relation to regulatory investigations and enforcement actions.</li>
+        <li>Offering assistance to clients in matters involving corporate fraud, economic offences, financial misconduct, and regulatory non-compliance.</li>
+        <li>Conducting internal investigations, compliance reviews, and corporate risk assessments.</li>
+        <li>Advising on anti-corruption, anti-bribery, and corporate governance frameworks.</li>
+        <li>Managing interactions with investigative agencies, regulatory authorities, tribunals, and courts.</li>
+        <li>Developing crisis-management and regulatory-defence strategies in high-stakes matters.</li>
+        <li>Protecting commercial, legal, and reputational interests during sensitive investigations and proceedings.</li>
+        <li>Strengthening organisational compliance frameworks through preventive risk management measures.</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
