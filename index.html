@@ -1048,7 +1048,7 @@
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     if (!document.getElementById('vcardQR').hasChildNodes()) {
-      var vcardData = "BEGIN:VCARD\nVERSION:3.0\nFN:Vanshul Pali\nN:Pali;Vanshul;;;\nORG:Vanshul Pali and Associates\nTITLE:Advocate and Arbitrator\nTEL;TYPE=CELL:+919711552649\nEMAIL:vpassociates13@gmail.com\nEMAIL:office@vanshulpali.net\nADR;TYPE=WORK:;;B2/1B Lower Ground Floor Nidhi House Safdarjung Enclave Africa Avenue Rd;New Delhi;;110029;India\nEND:VCARD";
+      var vcardData = "BEGIN:VCARD\nVERSION:3.0\nFN:Vanshul Pali\nN:Pali;Vanshul;;;\nORG:Vanshul Pali and Associates\nTITLE:Advocate | Arbitrator | Corporate Advisory | Disputes Counsel\nTEL;TYPE=CELL:+919711552649\nEMAIL:vpassociates13@gmail.com\nEMAIL:office@vanshulpali.net\nADR;TYPE=WORK:;;B2/1B Lower Ground Floor Nidhi House Safdarjung Enclave Africa Avenue Rd;New Delhi;;110029;India\nEND:VCARD";
       new QRCode(document.getElementById('vcardQR'), { text: vcardData, width: 160, height: 160, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
     }
   }
